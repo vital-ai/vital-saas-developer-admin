@@ -82,14 +82,7 @@ class WebServerVerticle extends AbstractVerticle {
 	
 		router.get('/status').handler(new StatusHandler())
 		
-		router.post('/vector').handler(new VectorHandler( vertx ))
-		
-		router.post('/tool').handler(new ToolHandler( vertx ))
-		
-		router.post('/kgupdate').handler(new KGUpdateHandler( vertx ))
-		
-		router.post('/kgquery').handler(new KGQueryHandler( vertx ))
-		
+
 		router.post('/binary').handler(new BinaryHandler( vertx ))
 			
 		StaticHandler staticHandler = StaticHandler.create()
