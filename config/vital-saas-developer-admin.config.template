@@ -1,0 +1,144 @@
+name: "vital-agent-rest"
+
+syncDomains: false
+
+verticles: [
+
+  {
+    name: "groovy:ai.vital.agent.rest.webapp.VitalAgentRestVerticle"
+    worker: false
+    reloadable: true
+    instances: 1
+  },
+  {
+    name: "groovy:ai.vital.agent.rest.webapp.VitalAgentRestWebappVerticle"
+    worker: false
+    reloadable: true,
+    instances: 1
+  },
+  
+  {
+    name: "groovy:ai.haley.webapp.client.HaleyClientVerticle"
+    worker: false
+    reloadable: true,
+    instances: 1
+  
+  },
+  
+  {
+    name: "groovy:ai.vital.agent.rest.webapp.webserver.WebServerVerticle"
+    worker: false
+    reloadable: true
+  }
+
+]
+
+webserver {
+
+  compressionSupported: true
+
+  host: 0.0.0.0
+  
+  port: 8044
+
+}
+
+
+# for admin functionality
+
+saasEventbusURL: "https://haley-saas-server.vital.ai/eventbus"
+
+disableSaasClient: false
+
+saasUsername: "haley@haley.ai"
+
+saasPassword: "password"
+
+appID: "haley"
+
+
+weaviate_server: 1234
+
+weaviate_port: 1234
+
+weaviate_vectorport: 1234
+
+
+
+virtuoso_server: 1234
+
+virtuoso_username: 123
+
+virtuoso_password: 1234
+
+auth_key_list: [
+
+	"key1",
+	"key2",
+	"key3"
+]
+
+
+
+s3 {
+
+  	aws_zone: "us-east-1"
+	
+	organization_id: "haley-ai"
+	
+	app_id: "haley-ai"
+	
+	access_key: "123"
+	
+	secret_key: "123"
+	
+	private_bucket_name: "private-bucket"
+	
+	public_bucket_name: "public-bucket"
+
+}
+
+
+tool_list: [
+
+{
+	tool_type: WEATHER_INFO,
+	
+	config: {
+	
+		api_key: 1234
+	}
+},
+
+{
+	tool_type: WEB_SEARCH,
+	
+	config: {
+	
+		api_key: 1234
+	}
+
+},
+
+{
+	tool_type: PLACE_SEARCH,
+	
+	config: {
+	
+		api_key: 1234
+	}
+
+},
+
+
+{
+	tool_type: IPADDRESS,
+	
+	config: {
+	
+		api_key: 1234
+	}
+
+}
+
+]
